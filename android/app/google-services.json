@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "5610320279",
+    "firebase_url": "https://keke-riders.firebaseio.com",
+    "project_id": "keke-riders",
+    "storage_bucket": "keke-riders.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5610320279:android:8dd14b7f0f833cf49594d2",
+        "android_client_info": {
+          "package_name": "com.topeyankey.yankeylogistics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5610320279-4kmtll5d5f5d17umdsfigv5vqf2c8rm5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtbq-DSUhNvlpUsQrdr3gPGvOb30AUDH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5610320279-4kmtll5d5f5d17umdsfigv5vqf2c8rm5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
