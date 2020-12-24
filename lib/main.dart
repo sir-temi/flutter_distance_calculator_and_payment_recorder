@@ -56,7 +56,7 @@ void callbackDispatcher(){
             ..html = "<h1>TODAY IS A PAYMENT DAY</h1>\n<p>${v['name'].toUpperCase()} should to pay today which is a ${v['paysOn'].toUpperCase()}</p>"
           ;
           try {
-            print('hi');
+            print('hello');
             final sendReport = await send(sendMessage, smtpServer);
             print('Message sent: ' + sendReport.toString());
           } on MailerException catch (e) {
