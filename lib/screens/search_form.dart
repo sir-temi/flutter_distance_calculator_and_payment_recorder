@@ -44,7 +44,7 @@ class _SearchFormState extends State<SearchForm> {
             title: Text(
               error is String && error.contains('errorla')
               ?'Something went wrong'
-              :error
+              :error.toString()+'fetchRiders'
               ),
             content: Text('Click the button below to refresh'),
             actions: <Widget>[
@@ -64,7 +64,7 @@ class _SearchFormState extends State<SearchForm> {
             title: Text(
               error is String && error.contains('errorla')
               ?'Something went wrong'
-              :error
+              :error.toString()+'setPayments'
               ),
             content: Text('Click the button below to refresh'),
             actions: <Widget>[

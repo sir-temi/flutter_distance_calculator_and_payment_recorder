@@ -115,8 +115,22 @@ class KekeRider with ChangeNotifier{
     }
   }
 
-  addPayment(int p, String id){
+  addPayment(int p, String id)async{
     // final r = _riders[id];
+    final url = 'https://keke-riders.firebaseio.com/riders/$id/payment/.json';
+
+    try{
+      final getRes = await http.get(url);
+      final response = await http.patch(url,
+        body: json.encode({
+          'payment': json.decode(getRes.body)+p,
+        })
+      );
+      print(json.decode(getRes.body)-p);
+      print(json.decode(getRes.body));
+      if(response.statusCode >= 400){
+        throw('error');
+      }
     final riderIndex = _riders.indexWhere((e) => e.id == id);
     _riders[riderIndex] = KekeRider(
       day: _riders[riderIndex].day,
@@ -126,6 +140,9 @@ class KekeRider with ChangeNotifier{
       id: _riders[riderIndex].id,
       payment: _riders[riderIndex].payment+p
     );
+  }catch(e){
+        
+      }
   }
 
   sendEmail(n, p) async{

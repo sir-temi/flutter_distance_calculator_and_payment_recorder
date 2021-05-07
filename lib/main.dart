@@ -55,16 +55,18 @@ void callbackDispatcher(){
             ..subject = '${v['name'].toUpperCase()} should pay today ${v['paysOn'].toUpperCase()}'
             ..html = "<h1>TODAY IS A PAYMENT DAY</h1>\n<p>${v['name'].toUpperCase()} should to pay today which is a ${v['paysOn'].toUpperCase()}</p>"
           ;
-          try {
-            print('hello');
-            final sendReport = await send(sendMessage, smtpServer);
-            print('Message sent: ' + sendReport.toString());
-          } on MailerException catch (e) {
-            print('Message not sent.');
-            for (var p in e.problems) {
-              print('Problem: ${p.code}: ${p.msg}');
-            }
-          }
+          await send(sendMessage, smtpServer);
+          print('hi');
+          // try {
+          //   print('hello');
+          //   final sendReport = await send(sendMessage, smtpServer);
+          //   print('Message sent: ' + sendReport.toString());
+          // } on MailerException catch (e) {
+          //   print('Message not sent.');
+          //   for (var p in e.problems) {
+          //     print('Problem: ${p.code}: ${p.msg}');
+          //   }
+          // }
         }else if(v['paysOn'].toUpperCase() == DateFormat('EEEE').format(DateTime.now().add(new Duration(days: 1))).toUpperCase()){
           const AndroidNotificationDetails androidPlatformChannelSpecifics =
               AndroidNotificationDetails(
@@ -105,8 +107,8 @@ void main() async{
     // isInDebugMode: true
     );
   await Workmanager.registerPeriodicTask(
-    '1uy1ab9s9', 
-    'dawi3a8s2s22ab', 
+    '1uy1ab29299s9', 
+    'dawi3asjjs8s2s22ab', 
     frequency: Duration(days: 1),
     initialDelay: Duration(seconds: 10)
     );
@@ -191,8 +193,33 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.list), 
             iconSize: 32,
             onPressed: 
-            () { 
+            () async{ 
               Navigator.of(context).pushReplacementNamed('/paymentlist');
+              final smtpServer = SmtpServer(
+                  'smtp-relay.sendinblue.com',
+                  port: 587,
+                  username : 'info@topeyankey.com',
+                  password : '4rAkVyZBINTmYWO1'
+              );
+              // final smtpServer2 = gmailSaslXoauth2('yankeylogistics@gmail.com', 'C0rnfl@kes');
+              final sendMessage = new Message()
+                ..from = Address('noreply@yankeytechnologies.topeyankey.com', 'TopeYankey Logistics')
+                ..recipients.add(Address('topeyankeyltd@gmail.com'))
+                ..subject = 'Tosin should pay today THURSDAY'
+                ..html = "<h1>TODAY IS A PAYMENT DAY</h1>\n<p>TOSIN should to pay today which is a THURSDAY</p>"
+              ;
+              
+              try {
+                print('in');
+                final sendReport = await send(sendMessage, smtpServer);
+                print('Message sent: ' + sendReport.toString());
+              } on MailerException catch (e) {
+                print('Message not sent.');
+                for (var p in e.problems) {
+                  print('Problem: ${p.code}: ${p.msg}');
+                }
+              }
+              print('out');
               }
             )
         ],

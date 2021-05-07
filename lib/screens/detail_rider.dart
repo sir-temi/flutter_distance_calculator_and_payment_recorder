@@ -86,8 +86,8 @@ class DetailRider extends StatelessWidget {
                     payments.length == 0 
                     ?'No Payment has been added'
                     : payments.length > 1
-                    ?'${payments.length} Payments'
-                    :'${payments.length} Payment'
+                    ?'${payments.length} previous Payments'
+                    :'${payments.length} previous Payment'
                     , 
                     style: TextStyle(fontSize: 20, color: Colors.blueAccent, fontWeight: FontWeight.bold)))
               ],
